@@ -9,76 +9,69 @@
 body{background:#0a0a0f;color:#e2e8f0;font-family:system-ui,sans-serif;padding:16px;transition:background .3s,color .3s}
 body.light{background:#f8fafc;color:#1e293b}
 .container{max-width:500px;margin:0 auto}
-.card{background:#12121a;border:1px solid rgba(0,245,212,.12);border-radius:20px;padding:24px;margin-bottom:16px;transition:background .3s}
-body.light .card{background:#ffffff;border-color:#e2e8f0}
-h1{text-align:center;font-size:22px;margin-bottom:4px}
+.card{background:#12121a;border:1px solid rgba(0,245,212,.12);border-radius:20px;padding:20px;margin-bottom:12px;transition:background .3s}
+body.light .card{background:#fff;border-color:#e2e8f0}
+h1{text-align:center;font-size:20px;margin-bottom:2px}
 h1 span{background:linear-gradient(135deg,#00f5d4,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{text-align:center;color:#64748b;font-size:12px;margin-bottom:16px}
-.budgie-pet{font-size:80px;text-align:center;margin:8px 0;animation:bounce 2s ease-in-out infinite;cursor:pointer}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.btn{width:100%;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:15px;font-weight:700;transition:all .2s;margin-bottom:8px}
+.sub{text-align:center;color:#64748b;font-size:12px;margin-bottom:12px}
+.budgie-pet{font-size:72px;text-align:center;margin:4px 0;animation:bounce 2s ease-in-out infinite;cursor:pointer}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.btn{width:100%;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:15px;font-weight:700;transition:all .2s;margin-bottom:6px}
 .btn-primary{background:linear-gradient(135deg,#00f5d4,#7c3aed);color:#0a0a0f}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(0,245,212,.2)}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
 .btn-secondary{background:rgba(0,245,212,.08);color:#00f5d4;border:1px solid rgba(0,245,212,.2)}
-.btn-secondary:hover{background:rgba(0,245,212,.15)}
 .btn-danger{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
-.btn-danger:hover{background:rgba(239,68,68,.2)}
 .btn.recording{background:#ef4444;color:#fff;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-.visualizer{height:48px;background:rgba(0,0,0,.2);border-radius:12px;margin:12px 0;display:flex;align-items:flex-end;justify-content:center;gap:2px;padding:4px}
-body.light .visualizer{background:rgba(0,0,0,.05)}
+.visualizer{height:40px;background:rgba(0,0,0,.2);border-radius:10px;margin:8px 0;display:flex;align-items:flex-end;justify-content:center;gap:2px;padding:4px}
 .bar{width:6px;border-radius:3px 3px 0 0;background:linear-gradient(to top,#00f5d4,#7c3aed);transition:height .08s;min-height:2px}
-.status{text-align:center;font-size:13px;color:#64748b;margin:8px 0;min-height:20px}
-.mood-result{padding:20px;border-radius:16px;margin-top:12px;display:none;animation:fadeIn .3s}
+.status{text-align:center;font-size:13px;color:#64748b;margin:6px 0;min-height:20px}
+.mood-result{padding:16px;border-radius:14px;margin-top:8px;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.mood-emoji{font-size:48px;text-align:center}
-.mood-name{font-size:18px;font-weight:700;text-align:center;margin:8px 0}
-.mood-confidence{text-align:center;font-size:12px;opacity:.7}
-.mood-desc{font-size:14px;line-height:1.6;margin:12px 0}
-.mood-advice{padding:12px;border-radius:12px;background:rgba(0,0,0,.25);margin:8px 0;font-size:13px;line-height:1.5}
-.raw-data{font-size:11px;color:#64748b;margin-top:12px;padding:12px;background:rgba(0,0,0,.15);border-radius:12px;line-height:1.8}
-.tabs{display:flex;gap:8px;margin-bottom:16px}
-.tab{flex:1;padding:10px;border-radius:12px;border:1px solid rgba(0,245,212,.2);background:transparent;color:#64748b;cursor:pointer;font-size:13px;font-weight:600;text-align:center;transition:all .2s}
+.mood-emoji{font-size:42px;text-align:center}
+.mood-name{font-size:17px;font-weight:700;text-align:center;margin:6px 0}
+.mood-conf{text-align:center;font-size:12px;opacity:.7}
+.mood-desc{font-size:14px;line-height:1.6;margin:10px 0}
+.mood-tip{padding:10px;border-radius:10px;background:rgba(0,0,0,.25);margin:6px 0;font-size:13px;line-height:1.5}
+.mood-raw{font-size:11px;color:#64748b;margin-top:10px;padding:10px;background:rgba(0,0,0,.15);border-radius:10px;line-height:1.7}
+.tabs{display:flex;gap:6px;margin-bottom:12px}
+.tab{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(0,245,212,.2);background:transparent;color:#64748b;cursor:pointer;font-size:13px;font-weight:600;text-align:center}
 .tab.active{border-color:#00f5d4;color:#00f5d4;background:rgba(0,245,212,.08)}
-.tab:hover{border-color:rgba(0,245,212,.4)}
 .panel{display:none}
 .panel.active{display:block}
-.history-item{padding:12px;border-radius:12px;margin-bottom:8px;border:1px solid rgba(0,245,212,.1);display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s}
+.history-item{padding:10px;border-radius:10px;margin-bottom:6px;border:1px solid rgba(0,245,212,.1);display:flex;align-items:center;gap:10px;cursor:pointer}
 .history-item:hover{background:rgba(0,245,212,.05)}
-.hist-emoji{font-size:28px;width:40px;text-align:center}
+.hist-emoji{font-size:24px;width:34px;text-align:center}
 .hist-info{flex:1}
-.hist-mood{font-size:14px;font-weight:600}
-.hist-date{font-size:11px;color:#64748b}
-.hist-conf{font-size:11px;color:#64748b}
-.hist-bar{width:60px;height:6px;border-radius:3px}
-.empty-state{text-align:center;padding:40px 20px;color:#64748b}
-.empty-state .big{font-size:48px;margin-bottom:12px}
-.empty-state p{font-size:14px;line-height:1.6}
-.file-upload-area{border:2px dashed rgba(0,245,212,.2);border-radius:16px;padding:30px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:12px}
-.file-upload-area:hover{border-color:rgba(0,245,212,.5);background:rgba(0,245,212,.03)}
-.file-upload-area.dragover{border-color:#00f5d4;background:rgba(0,245,212,.08)}
-.upload-icon{font-size:40px;margin-bottom:8px}
+.hist-mood{font-size:13px;font-weight:600}
+.hist-date{font-size:10px;color:#64748b}
+.hist-bar{width:40px;height:5px;border-radius:3px}
+.empty-state{text-align:center;padding:30px 20px;color:#64748b}
+.empty-state .big{font-size:40px;margin-bottom:10px}
+.empty-state p{font-size:13px;line-height:1.6}
+.upload-area{border:2px dashed rgba(0,245,212,.2);border-radius:14px;padding:24px;text-align:center;cursor:pointer;margin-bottom:10px}
+.upload-area:hover{border-color:rgba(0,245,212,.5)}
+.upload-icon{font-size:36px;margin-bottom:6px}
 .upload-text{font-size:13px;color:#64748b}
 .upload-text strong{color:#00f5d4}
-.theme-toggle{position:fixed;top:16px;right:16px;z-index:10;background:rgba(0,245,212,.1);border:1px solid rgba(0,245,212,.2);color:#00f5d4;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.theme-btn{position:fixed;top:12px;right:12px;z-index:10;background:rgba(0,245,212,.1);border:1px solid rgba(0,245,212,.2);color:#00f5d4;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px}
 .scientific{font-size:10px;color:#4a5568;margin-top:8px;font-style:italic;text-align:center}
-.footer{text-align:center;margin-top:16px;color:#4a5568;font-size:11px}
+.footer{text-align:center;margin:12px 0;color:#4a5568;font-size:11px}
 .hidden{display:none}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mood-chart{height:120px;display:flex;align-items:flex-end;gap:3px;padding:8px 0}
-.chart-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px;position:relative;transition:height .5s}
-.chart-bar:hover{opacity:.8}
-.chart-label{font-size:8px;text-align:center;color:#64748b;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.mood-chart{height:100px;display:flex;align-items:flex-end;gap:2px;padding:6px 0}
+.chart-bar{flex:1;border-radius:2px 2px 0 0;min-height:3px;transition:height .5s}
+.chart-lbl{font-size:7px;text-align:center;color:#64748b;margin-top:1px}
 .modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px}
 .modal.show{display:flex}
-.modal-content{background:#12121a;border:1px solid rgba(0,245,212,.15);border-radius:20px;padding:24px;max-width:400px;width:100%;max-height:80vh;overflow-y:auto}
-.modal-close{float:right;background:none;border:none;color:#64748b;font-size:20px;cursor:pointer}
+.modal-content{background:#12121a;border:1px solid rgba(0,245,212,.15);border-radius:18px;padding:20px;max-width:380px;width:100%;max-height:80vh;overflow-y:auto}
+.modal-close{float:right;background:none;border:none;color:#64748b;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
-<button class="theme-toggle" id="themeToggle">🌙</button>
+
+<button class="theme-btn" id="themeBtn">🌙</button>
 
 <div class="container">
 <div class="card" style="text-align:center">
@@ -87,331 +80,349 @@ body.light .visualizer{background:rgba(0,0,0,.05)}
 </div>
 
 <div class="tabs">
-<div class="tab active" onclick="switchTab('record')" id="tabRecord">🎤 Record</div>
-<div class="tab" onclick="switchTab('upload')" id="tabUpload">📁 Upload</div>
-<div class="tab" onclick="switchTab('history')" id="tabHistory">📊 History</div>
+<div class="tab active" id="tabRecord" onclick="showTab('record')">🎤 Record</div>
+<div class="tab" id="tabUpload" onclick="showTab('upload')">📁 Upload</div>
+<div class="tab" id="tabHistory" onclick="showTab('history')">📊 History</div>
 </div>
 
-<!-- RECORD TAB -->
-<div class="panel active" id="panelRecord">
-<div class="card">
-<div class="budgie-pet" id="budgiePet">🐦</div>
-<p class="status" id="status">Tap record, then make a budgie sound! 🐦</p>
-<div class="visualizer" id="visualizer">
-<div class="bar" style="height:4px"></div><div class="bar" style="height:8px"></div><div class="bar" style="height:12px"></div><div class="bar" style="height:6px"></div><div class="bar" style="height:16px"></div><div class="bar" style="height:10px"></div><div class="bar" style="height:14px"></div><div class="bar" style="height:8px"></div><div class="bar" style="height:12px"></div><div class="bar" style="height:6px"></div><div class="bar" style="height:18px"></div><div class="bar" style="height:10px"></div>
-</div>
-<button class="btn btn-primary" id="recordBtn" onclick="toggleRecording()">🎤 Tap to Record</button>
-<div id="liveResult"></div>
-</div>
-</div>
-
-<!-- UPLOAD TAB -->
-<div class="panel" id="panelUpload">
-<div class="card">
-<div class="file-upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-<div class="upload-icon">📁</div>
-<p class="upload-text">Drop a budgie recording here or <strong>click to browse</strong></p>
-<p style="font-size:11px;color:#4a5568;margin-top:8px">Supports .mp3, .wav, .ogg, .webm</p>
-<input type="file" id="fileInput" accept="audio/*" style="display:none">
-</div>
-<button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()" style="width:auto;display:inline-block;padding:10px 20px">📂 Choose File</button>
-<div id="uploadResult" style="margin-top:12px"></div>
-</div>
+<div id="panelRecord" class="panel active">
+  <div class="card">
+    <div class="budgie-pet" id="budgiePet">🐦</div>
+    <p class="status" id="status">Tap record, then make a budgie sound!</p>
+    <div class="visualizer" id="viz">
+      <div class="bar" style="height:4px"></div>
+      <div class="bar" style="height:8px"></div>
+      <div class="bar" style="height:12px"></div>
+      <div class="bar" style="height:6px"></div>
+      <div class="bar" style="height:16px"></div>
+      <div class="bar" style="height:10px"></div>
+      <div class="bar" style="height:14px"></div>
+      <div class="bar" style="height:8px"></div>
+      <div class="bar" style="height:12px"></div>
+      <div class="bar" style="height:6px"></div>
+      <div class="bar" style="height:18px"></div>
+      <div class="bar" style="height:10px"></div>
+    </div>
+    <button class="btn btn-primary" id="recordBtn">🎤 Tap to Record</button>
+    <div id="result"></div>
+  </div>
 </div>
 
-<!-- HISTORY TAB -->
-<div class="panel" id="panelHistory">
-<div class="card">
-<div class="grid-2" style="margin-bottom:12px">
-<button class="btn btn-secondary" onclick="clearHistory()" style="font-size:12px;padding:8px">🗑️ Clear All</button>
-<button class="btn btn-secondary" onclick="exportHistory()" style="font-size:12px;padding:8px">📤 Export</button>
-</div>
-<div id="moodChart"></div>
-<div id="historyList"></div>
-</div>
-</div>
-
-<div class="scientific">Based on research by Farabaugh et al. 1992 & Brittan-Powell et al. 1997</div>
-<div class="footer">Made with ❤️ for budgie parents everywhere 🐦</div>
+<div id="panelUpload" class="panel">
+  <div class="card">
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">📁</div>
+      <p class="upload-text">Drop a recording or <strong>click to browse</strong></p>
+      <p style="font-size:10px;color:#4a5568;margin-top:6px">.mp3 .wav .ogg .webm</p>
+    </div>
+    <input type="file" id="fileInput" accept="audio/*" style="display:none">
+    <div id="uploadResult"></div>
+  </div>
 </div>
 
-<!-- Detail Modal -->
+<div id="panelHistory" class="panel">
+  <div class="card">
+    <div class="grid-2">
+      <button class="btn btn-secondary" onclick="clearHist()" style="font-size:12px;padding:8px">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="exportCSV()" style="font-size:12px;padding:8px">📤 CSV</button>
+    </div>
+    <div id="chartArea"></div>
+    <div id="listArea"></div>
+  </div>
+</div>
+
+<div class="scientific">Farabaugh et al. 1992 · Brittan-Powell et al. 1997</div>
+<div class="footer">Made with ❤️ for budgie parents</div>
+</div>
+
 <div class="modal" id="detailModal">
 <div class="modal-content" id="detailContent"></div>
 </div>
 
 <script>
-// === STATE ===
-let recordingData = { stream: null, recorder: null, chunks: [], ctx: null, analyser: null, dataArray: null, active: false };
-let moodHistory = JSON.parse(localStorage.getItem('budgieHistory') || '[]');
+// State
+let isRecording = false;
+let mediaRec = null;
+let audioCtx = null;
+let analyser = null;
+let dataArr = null;
+let stream = null;
+let chunks = [];
+let history = JSON.parse(localStorage.getItem('bh') || '[]');
+const bars = document.querySelectorAll('.bar');
+const statusEl = document.getElementById('status');
+const recordBtn = document.getElementById('recordBtn');
+const pet = document.getElementById('budgiePet');
 
-// === THEME ===
-let darkMode = true;
-document.getElementById('themeToggle').onclick = () => {
-  darkMode = !darkMode;
-  document.body.classList.toggle('light', !darkMode);
-  document.getElementById('themeToggle').textContent = darkMode ? '🌙' : '☀️';
+// Theme
+let dark = true;
+document.getElementById('themeBtn').onclick = function() {
+  dark = !dark;
+  document.body.classList.toggle('light', !dark);
+  this.textContent = dark ? '🌙' : '☀️';
 };
 
-// === TABS ===
-function switchTab(name) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+// Tabs
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
   document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('active');
   document.getElementById('panel' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('active');
   if (name === 'history') renderHistory();
 }
 
-// === RECORDING ===
-const bars = document.querySelectorAll('.bar');
-const statusEl = document.getElementById('status');
-const recordBtn = document.getElementById('recordBtn');
-const budgiePet = document.getElementById('budgiePet');
+// Recording
+recordBtn.onclick = function() {
+  if (isRecording) { stopRec(); return; }
+  startRec();
+};
 
-async function toggleRecording() {
-  if (recordingData.active) return stopRecording();
-  
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const source = ctx.createMediaStreamSource(stream);
-    const analyser = ctx.createAnalyser();
+function startRec() {
+  navigator.mediaDevices.getUserMedia({ audio: true }).then(function(s) {
+    stream = s;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var src = audioCtx.createMediaStreamSource(s);
+    analyser = audioCtx.createAnalyser();
     analyser.fftSize = 256;
-    source.connect(analyser);
-    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    src.connect(analyser);
+    dataArr = new Uint8Array(analyser.frequencyBinCount);
     
-    const recorder = new MediaRecorder(stream);
-    const chunks = [];
-    recorder.ondataavailable = e => chunks.push(e.data);
-    recorder.onstop = () => {
-      stream.getTracks().forEach(t => t.stop());
+    mediaRec = new MediaRecorder(s);
+    chunks = [];
+    mediaRec.ondataavailable = function(e) { chunks.push(e.data); };
+    mediaRec.onstop = function() {
+      s.getTracks().forEach(function(t) { t.stop(); });
       processAudio(new Blob(chunks, { type: 'audio/webm' }));
     };
     
-    recorder.start();
-    recordingData = { stream, recorder, chunks, ctx, analyser, dataArray, active: true };
-    
-    recordBtn.textContent = '⏹️ Stop Recording';
+    mediaRec.start();
+    isRecording = true;
+    recordBtn.textContent = '⏹️ Stop';
     recordBtn.classList.add('recording');
-    statusEl.textContent = 'Recording... Make a budgie sound! 🐦🎵';
-    budgiePet.style.animation = 'bounce .5s ease-in-out infinite';
+    statusEl.textContent = 'Recording... 🐦🎵';
+    pet.style.animation = 'bounce .5s ease-in-out infinite';
     
     function draw() {
-      if (!recordingData.active) return;
-      analyser.getByteFrequencyData(dataArray);
-      for (let i = 0; i < bars.length; i++) bars[i].style.height = Math.max(2, (dataArray[i * 2] || 0) / 3) + 'px';
+      if (!isRecording) return;
+      analyser.getByteFrequencyData(dataArr);
+      for (var i = 0; i < bars.length; i++) {
+        bars[i].style.height = Math.max(2, (dataArr[i * 2] || 0) / 3) + 'px';
+      }
       requestAnimationFrame(draw);
     }
     draw();
     
-    setTimeout(() => { if (recordingData.active) stopRecording(); }, 6000);
-  } catch(e) {
-    statusEl.textContent = '⚠️ Need mic access. ' + e.message;
-  }
+    setTimeout(function() { if (isRecording) stopRec(); }, 6000);
+  }).catch(function(e) {
+    statusEl.textContent = '⚠️ Mic needed: ' + e.message;
+  });
 }
 
-function stopRecording() {
-  recordingData.active = false;
-  recordingData.recorder.stop();
-  if (recordingData.ctx) recordingData.ctx.close();
+function stopRec() {
+  isRecording = false;
+  if (mediaRec && mediaRec.state !== 'inactive') mediaRec.stop();
+  if (audioCtx) audioCtx.close();
   recordBtn.textContent = '🎤 Tap to Record';
   recordBtn.classList.remove('recording');
   statusEl.textContent = 'Analyzing... 🔬';
-  budgiePet.style.animation = '';
+  pet.style.animation = '';
 }
 
-// === AUDIO PROCESSING ===
-async function processAudio(blob) {
-  try {
-    const arrayBuffer = await blob.arrayBuffer();
-    const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const audioBuffer = await tempCtx.decodeAudioData(arrayBuffer);
-    const channelData = audioBuffer.getChannelData(0);
-    const sampleRate = audioBuffer.sampleRate;
-    const duration = audioBuffer.duration;
-    
-    // Feature extraction
-    let sum = 0, sumSq = 0, maxVal = 0, zeroCrossings = 0;
-    let prevSign = channelData[0] >= 0;
-    for (let i = 0; i < channelData.length; i++) {
-      sum += Math.abs(channelData[i]);
-      sumSq += channelData[i] * channelData[i];
-      maxVal = Math.max(maxVal, Math.abs(channelData[i]));
-      const currSign = channelData[i] >= 0;
-      if (currSign !== prevSign) zeroCrossings++;
-      prevSign = currSign;
-    }
-    
-    const rms = Math.sqrt(sumSq / channelData.length);
-    const energy = Math.min(1, rms * 5);
-    
-    // Pitch via autocorrelation
-    let pitch = 0, maxCorr = 0;
-    for (let lag = 20; lag < sampleRate / 500; lag++) {
-      let corr = 0;
-      for (let i = 0; i < channelData.length - lag; i += 100) corr += channelData[i] * channelData[i + lag];
-      corr /= (channelData.length / 100);
-      if (corr > maxCorr) { maxCorr = corr; pitch = sampleRate / lag; }
-    }
-    
-    const rhythm = Math.min(1, zeroCrossings / (channelData.length * 0.5));
-    const features = { pitch: Math.round(pitch), energy: Math.round(energy * 100) / 100, rhythm: Math.round(rhythm * 100) / 100, duration: Math.round(duration * 100) / 100 };
-    
-    tempCtx.close();
-    
-    // Get result
-    let result;
-    try {
-      const res = await fetch('/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ features }) });
-      result = await res.json();
-    } catch { result = analyzeLocally(features); }
-    
-    result.timestamp = Date.now();
-    result.features = features;
-    
-    showResult(result, features);
-    moodHistory.unshift(result);
-    if (moodHistory.length > 100) moodHistory = moodHistory.slice(0, 100);
-    localStorage.setItem('budgieHistory', JSON.stringify(moodHistory));
-    
-  } catch(e) {
-    statusEl.textContent = '⚠️ Error processing audio: ' + e.message;
-  }
+// Audio processing
+function processAudio(blob) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.decodeAudioData(reader.result).then(function(buf) {
+      var data = buf.getChannelData(0);
+      var sr = buf.sampleRate;
+      var dur = buf.duration;
+      
+      var sum = 0, sumsq = 0, zc = 0;
+      var prev = data[0] >= 0;
+      for (var i = 0; i < data.length; i++) {
+        sum += Math.abs(data[i]);
+        sumsq += data[i] * data[i];
+        var cur = data[i] >= 0;
+        if (cur !== prev) zc++;
+        prev = cur;
+      }
+      
+      var rms = Math.sqrt(sumsq / data.length);
+      var energy = Math.min(1, rms * 5);
+      var rhythm = Math.min(1, zc / (data.length * 0.5));
+      
+      // Pitch
+      var pitch = 0, maxc = 0;
+      for (var lag = 20; lag < sr / 500; lag++) {
+        var c = 0;
+        for (var j = 0; j < data.length - lag; j += 100) c += data[j] * data[j + lag];
+        c /= (data.length / 100);
+        if (c > maxc) { maxc = c; pitch = sr / lag; }
+      }
+      
+      audioCtx.close();
+      
+      var features = {
+        pitch: Math.round(pitch),
+        energy: Math.round(energy * 100),
+        rhythm: Math.round(rhythm * 100),
+        duration: Math.round(dur * 100) / 100
+      };
+      
+      analyze(features);
+    });
+  };
+  reader.readAsArrayBuffer(blob);
 }
 
-function analyzeLocally(f) {
-  const { pitch, energy, rhythm } = f;
-  let mood, emoji, color, confidence, description, advice;
-  if (pitch > 3500 && energy > 0.6) { mood = "Excited & Happy"; emoji = "🎉"; color = "#00f5d4"; confidence = 82; description = "Your budgie is feeling energetic and joyful!"; advice = "Talk back! Budgies love interactive vocal play."; }
-  else if (pitch > 2500 && energy > 0.3) { mood = "Content & Chatty"; emoji = "😊"; color = "#7c3aed"; confidence = 78; description = "Your budgie is relaxed and socializing."; advice = "They're happy! Keep doing what you're doing."; }
-  else if (pitch <= 2500 && energy <= 0.3) { mood = "Calm / Sleepy"; emoji = "😴"; color = "#60a5fa"; confidence = 75; description = "Soft, low-energy sounds — winding down."; advice = "Consider dimming lights. They may be ready for a nap."; }
-  else if (pitch > 3500 && energy <= 0.3) { mood = "Alert / Uncertain"; emoji = "😰"; color = "#f59e0b"; confidence = 71; description = "Sharp calls — may have heard something unfamiliar."; advice = "Check for stressors. Speak calmly."; }
-  else if (rhythm > 0.7 && energy > 0.5) { mood = "Distressed"; emoji = "😢"; color = "#ef4444"; confidence = 80; description = "Irregular, high-energy — possible distress."; advice = "Check food, water, environment."; }
-  else if (energy < 0.15 && pitch < 2000) { mood = "Lethargic / Unwell"; emoji = "🤒"; color = "#dc2626"; confidence = 68; description = "Unusually quiet. Monitor for symptoms."; advice = "Consider an avian vet if prolonged."; }
-  else { mood = "Neutral / Observing"; emoji = "🐦"; color = "#94a3b8"; confidence = 60; description = "Alert, observing, making contact calls."; advice = "Nothing to worry about!"; }
-  return { mood, emoji, color, confidence, description, advice };
+function analyze(f) {
+  var r = getMood(f);
+  r.timestamp = Date.now();
+  r.pitch = f.pitch;
+  r.energy = f.energy;
+  r.rhythm = f.rhythm;
+  r.duration = f.duration;
+  
+  showResult(r);
+  history.unshift(r);
+  if (history.length > 100) history = history.slice(0, 100);
+  localStorage.setItem('bh', JSON.stringify(history));
 }
 
-function showResult(data, features) {
-  const div = document.getElementById('liveResult');
-  budgiePet.textContent = data.emoji;
-  div.style.display = 'block';
-  div.innerHTML = \`
-    <div class="mood-result" style="display:block;background:\${data.color}15;border:1px solid \${data.color}40">
-      <div class="mood-emoji">\${data.emoji}</div>
-      <div class="mood-name" style="color:\${data.color}">\${data.mood}</div>
-      <div class="mood-confidence">\${data.confidence}% confidence</div>
-      <div class="mood-desc">\${data.description}</div>
-      <div class="mood-advice" style="border-left:3px solid \${data.color}">💡 \${data.advice}</div>
-      <div class="raw-data">
-        📊 Audio Data: Pitch: \${features.pitch}Hz | Energy: \${Math.round(features.energy*100)}% | Rhythm: \${Math.round(features.rhythm*100)}% | Duration: \${features.duration}s
-      </div>
-    </div>\`;
-  statusEl.textContent = '✅ Done! Record another or check history 📊';
+function getMood(f) {
+  var p = f.pitch, e = f.energy, rh = f.rhythm;
+  if (p > 3500 && e > 60) return { mood:'Excited & Happy', emoji:'🎉', color:'#00f5d4', conf:82, desc:'Your budgie is feeling energetic and joyful!', tip:'Talk back! Budgies love vocal play.' };
+  if (p > 2500 && e > 30) return { mood:'Content & Chatty', emoji:'😊', color:'#7c3aed', conf:78, desc:'Your budgie is relaxed and socializing.', tip:'Keep doing what you are doing!' };
+  if (p <= 2500 && e <= 30) return { mood:'Calm / Sleepy', emoji:'😴', color:'#60a5fa', conf:75, desc:'Soft, low-energy sounds — winding down.', tip:'Dim lights. They may want a nap.' };
+  if (p > 3500 && e <= 30) return { mood:'Alert / Uncertain', emoji:'😰', color:'#f59e0b', conf:71, desc:'Sharp calls — may have heard something.', tip:'Check for stressors. Speak calmly.' };
+  if (rh > 70 && e > 50) return { mood:'Distressed', emoji:'😢', color:'#ef4444', conf:80, desc:'Irregular, high-energy — possible distress.', tip:'Check food, water, environment.' };
+  if (e < 15 && p < 2000) return { mood:'Lethargic / Unwell', emoji:'🤒', color:'#dc2626', conf:68, desc:'Unusually quiet. Monitor symptoms.', tip:'Consider an avian vet if prolonged.' };
+  return { mood:'Neutral / Observing', emoji:'🐦', color:'#94a3b8', conf:60, desc:'Alert, observing, making contact calls.', tip:'Nothing to worry about!' };
+}
+
+function showResult(r) {
+  pet.textContent = r.emoji;
+  var d = document.getElementById('result');
+  d.style.display = 'block';
+  d.innerHTML = '<div class="mood-result" style="display:block;background:' + r.color + '15;border:1px solid ' + r.color + '40">' +
+    '<div class="mood-emoji">' + r.emoji + '</div>' +
+    '<div class="mood-name" style="color:' + r.color + '">' + r.mood + '</div>' +
+    '<div class="mood-conf">' + r.conf + '% confidence</div>' +
+    '<div class="mood-desc">' + r.desc + '</div>' +
+    '<div class="mood-tip" style="border-left:3px solid ' + r.color + '">💡 ' + r.tip + '</div>' +
+    '<div class="mood-raw">📊 ' + r.pitch + 'Hz | ' + r.energy + '% energy | ' + r.rhythm + '% rhythm | ' + r.duration + 's</div>' +
+    '</div>';
+  statusEl.textContent = '✅ Done! Record another or check history.';
   recordBtn.textContent = '🎤 Record Again';
 }
 
-// === UPLOAD ===
-const uploadArea = document.getElementById('uploadArea');
-const fileInput = document.getElementById('fileInput');
+// Upload
+var uploadArea = document.getElementById('uploadArea');
+var fileInput = document.getElementById('fileInput');
 
-uploadArea.ondragover = e => { e.preventDefault(); uploadArea.classList.add('dragover'); };
-uploadArea.ondragleave = () => uploadArea.classList.remove('dragover');
-uploadArea.ondrop = e => { e.preventDefault(); uploadArea.classList.remove('dragover'); if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); };
-fileInput.onchange = () => { if (fileInput.files.length) handleFile(fileInput.files[0]); };
+uploadArea.ondragover = function(e) { e.preventDefault(); this.style.borderColor = '#00f5d4'; };
+uploadArea.ondragleave = function() { this.style.borderColor = ''; };
+uploadArea.ondrop = function(e) { e.preventDefault(); this.style.borderColor = ''; if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); };
+uploadArea.onclick = function() { fileInput.click(); };
+fileInput.onchange = function() { if (this.files.length) handleFile(this.files[0]); };
 
 function handleFile(file) {
   statusEl.textContent = 'Processing uploaded file...';
   processAudio(file);
 }
 
-// === HISTORY ===
+// History
 function renderHistory() {
-  const list = document.getElementById('historyList');
-  const chart = document.getElementById('moodChart');
+  var list = document.getElementById('listArea');
+  var chart = document.getElementById('chartArea');
   
-  if (moodHistory.length === 0) {
-    list.innerHTML = \`<div class="empty-state"><div class="big">📭</div><p>No recordings yet!<br>Record your budgie's sound to start tracking their mood.</p></div>\`;
+  if (history.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="big">📭</div><p>No recordings yet!<br>Record your budgie to start tracking.</p></div>';
     chart.innerHTML = '';
     return;
   }
   
-  // Chart - last 20 entries
-  const recent = moodHistory.slice(0, 20).reverse();
-  chart.innerHTML = '<div class="mood-chart">' + recent.map(h => {
-    const maxH = 80;
-    const hgt = Math.max(4, (h.confidence || 50) / 100 * maxH);
-    return \`<div style="flex:1;display:flex;flex-direction:column;align-items:center"><div class="chart-bar" style="height:\${hgt}px;background:\${h.color || '#64748b'}" title="\${h.mood}"></div><div class="chart-label">\${h.emoji}</div></div>\`;
-  }).join('') + '</div>';
+  // Chart
+  var recent = history.slice(0, 20).reverse();
+  var chartHtml = '<div class="mood-chart">';
+  for (var i = 0; i < recent.length; i++) {
+    var h = recent[i];
+    var ht = Math.max(4, (h.conf || 50) / 100 * 80);
+    chartHtml += '<div style="flex:1;display:flex;flex-direction:column;align-items:center">' +
+      '<div class="chart-bar" style="height:' + ht + 'px;background:' + (h.color || '#64748b') + '"></div>' +
+      '<div class="chart-lbl">' + h.emoji + '</div></div>';
+  }
+  chartHtml += '</div>';
+  chart.innerHTML = chartHtml;
   
   // List
-  list.innerHTML = moodHistory.map((h, i) => \`
-    <div class="history-item" onclick="showDetail(\${i})">
-      <div class="hist-emoji">\${h.emoji}</div>
-      <div class="hist-info">
-        <div class="hist-mood" style="color:\${h.color}">\${h.mood}</div>
-        <div class="hist-date">\${new Date(h.timestamp).toLocaleDateString()} \${new Date(h.timestamp).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="hist-conf">\${h.confidence}%</div>
-        <div class="hist-bar" style="background:\${h.color}"></div>
-      </div>
-    </div>
-  \`).join('');
+  var html = '';
+  for (var i = 0; i < history.length; i++) {
+    var h = history[i];
+    var d = new Date(h.timestamp);
+    var dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    html += '<div class="history-item" onclick="showDetail(' + i + ')">' +
+      '<div class="hist-emoji">' + h.emoji + '</div>' +
+      '<div class="hist-info">' +
+      '<div class="hist-mood" style="color:' + h.color + '">' + h.mood + '</div>' +
+      '<div class="hist-date">' + dateStr + '</div></div>' +
+      '<div style="text-align:right"><div style="font-size:10px;color:#64748b">' + h.conf + '%</div>' +
+      '<div class="hist-bar" style="background:' + h.color + '"></div></div></div>';
+  }
+  list.innerHTML = html;
 }
 
-function showDetail(index) {
-  const h = moodHistory[index];
+function showDetail(i) {
+  var h = history[i];
   if (!h) return;
-  const f = h.features || {};
-  document.getElementById('detailContent').innerHTML = \`
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div style="text-align:center">
-      <div style="font-size:56px">\${h.emoji}</div>
-      <h2 style="color:\${h.color};margin:8px 0">\${h.mood}</h2>
-      <div>\${h.confidence}% confidence</div>
-      <div style="font-size:12px;color:#64748b;margin-bottom:12px">\${new Date(h.timestamp).toLocaleString()}</div>
-      <p style="font-size:14px;line-height:1.6">\${h.description}</p>
-      <div class="mood-advice" style="border-left:3px solid \${h.color};margin-top:12px">💡 \${h.advice}</div>
-      <div class="raw-data" style="margin-top:12px">
-        Pitch: \${f.pitch || '?'} Hz<br>
-        Energy: \${f.energy ? Math.round(f.energy*100) + '%' : '?'}<br>
-        Rhythm: \${f.rhythm ? Math.round(f.rhythm*100) + '%' : '?'}<br>
-        Duration: \${f.duration || '?'}s
-      </div>
-      <button class="btn btn-danger" style="margin-top:12px" onclick="deleteEntry(\${index})">🗑️ Delete Entry</button>
-    </div>
-  \`;
+  var d = new Date(h.timestamp);
+  var dateStr = d.toLocaleString();
+  document.getElementById('detailContent').innerHTML =
+    '<button class="modal-close" onclick="closeModal()">✕</button>' +
+    '<div style="text-align:center">' +
+    '<div style="font-size:48px">' + h.emoji + '</div>' +
+    '<h2 style="color:' + h.color + ';margin:6px 0">' + h.mood + '</h2>' +
+    '<div>' + h.conf + '% confidence</div>' +
+    '<div style="font-size:12px;color:#64748b;margin:8px 0">' + dateStr + '</div>' +
+    '<p style="font-size:14px;line-height:1.6">' + (h.desc || '') + '</p>' +
+    '<div class="mood-tip" style="border-left:3px solid ' + h.color + ';margin-top:8px">💡 ' + (h.tip || '') + '</div>' +
+    '<div class="mood-raw" style="margin-top:8px">' +
+    'Pitch: ' + (h.pitch || '?') + ' Hz<br>' +
+    'Energy: ' + (h.energy || '?') + '%<br>' +
+    'Rhythm: ' + (h.rhythm || '?') + '%<br>' +
+    'Duration: ' + (h.duration || '?') + 's</div>' +
+    '<button class="btn btn-danger" style="margin-top:10px;font-size:13px;padding:10px" onclick="delEntry(' + i + ')">🗑️ Delete</button></div>';
   document.getElementById('detailModal').classList.add('show');
 }
 
 function closeModal() { document.getElementById('detailModal').classList.remove('show'); }
-document.getElementById('detailModal').onclick = e => { if (e.target === e.currentTarget) closeModal(); };
+document.getElementById('detailModal').onclick = function(e) { if (e.target === this) closeModal(); };
 
-function deleteEntry(index) {
-  moodHistory.splice(index, 1);
-  localStorage.setItem('budgieHistory', JSON.stringify(moodHistory));
+function delEntry(i) {
+  history.splice(i, 1);
+  localStorage.setItem('bh', JSON.stringify(history));
   closeModal();
   renderHistory();
 }
 
-function clearHistory() {
-  if (confirm('Clear all mood history?')) { moodHistory = []; localStorage.removeItem('budgieHistory'); renderHistory(); }
+function clearHist() {
+  if (confirm('Clear all mood history?')) { history = []; localStorage.removeItem('bh'); renderHistory(); }
 }
 
-function exportHistory() {
-  if (moodHistory.length === 0) return alert('No history to export.');
-  let csv = 'Date,Mood,Emoji,Confidence,Pitch,Energy,Rhythm\n';
-  moodHistory.forEach(h => {
-    const f = h.features || {};
-    csv += \`"\${new Date(h.timestamp).toLocaleString()}",\${h.mood},\${h.emoji},\${h.confidence}%,\${f.pitch || ''},\${f.energy || ''},\${f.rhythm || ''}\n\`;
-  });
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const a = document.createElement('a');
+function exportCSV() {
+  if (history.length === 0) return alert('No history to export.');
+  var csv = 'Date,Mood,Emoji,Confidence,Pitch,Energy,Rhythm\n';
+  for (var i = 0; i < history.length; i++) {
+    var h = history[i];
+    var d = new Date(h.timestamp).toLocaleString();
+    csv += '"' + d + '",' + h.mood + ',' + h.emoji + ',' + h.conf + '%,' + (h.pitch || '') + ',' + (h.energy || '') + ',' + (h.rhythm || '') + '\n';
+  }
+  var blob = new Blob([csv], { type: 'text/csv' });
+  var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'budgie-mood-history.csv';
+  a.download = 'budgie-moods.csv';
   a.click();
-  URL.revokeObjectURL(a.href);
 }
 
 // Init
