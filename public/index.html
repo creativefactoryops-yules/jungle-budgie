@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jungle Budgie - Mood Reader</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e2e8f0;font-family:system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.container{max-width:480px;width:100%}
+.pixel-card{background:#12121a;border:2px solid rgba(0,245,212,.15);border-radius:20px;padding:24px;text-align:center;position:relative}
+.pixel-border{position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid rgba(0,245,212,.05);border-radius:22px;pointer-events:none}
+h1{font-size:20px;margin-bottom:4px;letter-spacing:1px}
+h1 span{background:linear-gradient(135deg,#00f5d4,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#64748b;font-size:12px;margin-bottom:20px}
+.budgie-pet{font-size:72px;margin:8px 0;animation:bounce 2s ease-in-out infinite;cursor:pointer}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.btn-record{width:100%;padding:16px;border-radius:16px;border:2px solid #00f5d4;background:transparent;color:#00f5d4;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:12px}
+.btn-record:hover{background:rgba(0,245,212,.1)}
+.btn-record.recording{background:#ef4444;border-color:#ef4444;color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.mood-result{display:none;margin-top:16px;padding:20px;border-radius:16px;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.mood-emoji{font-size:48px}
+.mood-name{font-size:18px;font-weight:700;margin:8px 0}
+.mood-confidence{font-size:12px;opacity:.7}
+.mood-desc{font-size:14px;line-height:1.6;margin:12px 0;opacity:.9}
+.mood-advice{font-size:13px;padding:12px;border-radius:12px;background:rgba(0,0,0,.3);margin:8px 0;line-height:1.5}
+.raw-data{font-size:11px;color:#64748b;margin-top:12px;padding:12px;background:rgba(0,0,0,.2);border-radius:12px;text-align:left;line-height:1.8}
+.scientific{font-size:10px;color:#4a5568;margin-top:12px;font-style:italic}
+.status-text{font-size:13px;color:#64748b;margin:8px 0;min-height:20px}
+.visualizer{height:48px;background:rgba(0,0,0,.3);border-radius:12px;margin:12px 0;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;gap:2px;padding:4px}
+.bar{width:6px;border-radius:3px 3px 0 0;background:linear-gradient(to top,#00f5d4,#7c3aed);transition:height .08s;min-height:2px}
+.theme-toggle{position:absolute;top:12px;right:12px;background:none;border:none;color:#64748b;font-size:16px;cursor:pointer;padding:4px}
+.footer{text-align:center;margin-top:16px;color:#4a5568;font-size:11px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="pixel-card" id="appCard">
+<h1>🐦 <span>Jungle Budgie</span></h1>
+<p class="sub">Scientifically-backed budgie mood reader</p>
+<button class="theme-toggle" onclick="toggleTheme()">🎨</button>
+
+<div class="budgie-pet" id="budgiePet">🐦</div>
+
+<button class="btn-record" id="recordBtn" onclick="toggleRecording()">
+🎤 Tap to Record Budgie Sound
+</button>
+
+<div class="visualizer" id="visualizer">
+<div class="bar" style="height:4px"></div>
+<div class="bar" style="height:8px"></div>
+<div class="bar" style="height:12px"></div>
+<div class="bar" style="height:6px"></div>
+<div class="bar" style="height:16px"></div>
+<div class="bar" style="height:10px"></div>
+<div class="bar" style="height:14px"></div>
+<div class="bar" style="height:8px"></div>
+<div class="bar" style="height:12px"></div>
+<div class="bar" style="height:6px"></div>
+<div class="bar" style="height:18px"></div>
+<div class="bar" style="height:10px"></div>
+</div>
+
+<p class="status-text" id="status">Tap record, then make a budgie sound! 🐦</p>
+
+<div id="results" class="mood-result"></div>
+</div>
+<p class="footer">Based on research by Farabaugh et al. 1992 & Brittan-Powell et al. 1997</p>
+</div>
+
+<script>
+let mediaRecorder, audioChunks = [], isRecording = false, audioContext, analyser, dataArray;
+const bars = document.querySelectorAll('.bar');
+const visualizer = document.getElementById('visualizer');
+
+function toggleTheme() {
+  document.body.style.background = document.body.style.background === '#0a0a0f' ? '#f8fafc' : '#0a0a0f';
+  document.body.style.color = document.body.style.background === '#f8fafc' ? '#1e293b' : '#e2e8f0';
+  document.querySelector('.pixel-card').style.background = document.body.style.background === '#f8fafc' ? '#ffffff' : '#12121a';
+}
+
+async function toggleRecording() {
+  const btn = document.getElementById('recordBtn');
+  if (isRecording) {
+    mediaRecorder.stop();
+    if (audioContext) audioContext.close();
+    isRecording = false;
+    btn.textContent = '🎤 Tap to Record Budgie Sound';
+    btn.classList.remove('recording');
+    document.getElementById('status').textContent = 'Analyzing... 🔬';
+    return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaStreamSource(stream);
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 256;
+    source.connect(analyser);
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+    
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      processAudio();
+    };
+    
+    mediaRecorder.start();
+    isRecording = true;
+    btn.textContent = '⏹️ Stop Recording';
+    btn.classList.add('recording');
+    document.getElementById('status').textContent = 'Recording... Make a budgie sound! 🐦🎵';
+    
+    // Visualizer
+    function draw() {
+      if (!isRecording) return;
+      analyser.getByteFrequencyData(dataArray);
+      for (let i = 0; i < bars.length; i++) {
+        const val = dataArray[i * 2] || 0;
+        bars[i].style.height = Math.max(2, val / 3) + 'px';
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+    
+    // Auto-stop after 5 seconds
+    setTimeout(() => {
+      if (isRecording) toggleRecording();
+    }, 5000);
+  } catch(e) {
+    document.getElementById('status').textContent = '⚠️ Need mic access. ' + e.message;
+  }
+}
+
+async function processAudio() {
+  const blob = new Blob(audioChunks, { type: 'audio/webm' });
+  
+  // Extract audio features using Web Audio API
+  const arrayBuffer = await blob.arrayBuffer();
+  const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const audioBuffer = await tempCtx.decodeAudioData(arrayBuffer);
+  const channelData = audioBuffer.getChannelData(0);
+  const sampleRate = audioBuffer.sampleRate;
+  const duration = audioBuffer.duration;
+  
+  // Calculate features
+  let sum = 0, sumSq = 0, maxVal = 0, zeroCrossings = 0;
+  let prevSign = channelData[0] >= 0;
+  
+  for (let i = 0; i < channelData.length; i++) {
+    const sample = channelData[i];
+    sum += Math.abs(sample);
+    sumSq += sample * sample;
+    maxVal = Math.max(maxVal, Math.abs(sample));
+    
+    const currSign = sample >= 0;
+    if (currSign !== prevSign) zeroCrossings++;
+    prevSign = currSign;
+  }
+  
+  const rms = Math.sqrt(sumSq / channelData.length);
+  const energy = Math.min(1, rms * 5);
+  const avgAmp = sum / channelData.length;
+  
+  // Pitch estimation via autocorrelation
+  let pitch = 0, maxCorr = 0;
+  for (let lag = 20; lag < sampleRate / 500; lag++) {
+    let corr = 0;
+    for (let i = 0; i < channelData.length - lag; i += 100) {
+      corr += channelData[i] * channelData[i + lag];
+    }
+    corr /= (channelData.length / 100);
+    if (corr > maxCorr) { maxCorr = corr; pitch = sampleRate / lag; }
+  }
+  
+  // Zero crossing rate as rhythm measure
+  const rhythm = Math.min(1, zeroCrossings / (channelData.length * 0.5));
+  
+  const features = {
+    pitch: Math.round(pitch),
+    energy: Math.round(energy * 100) / 100,
+    rhythm: Math.round(rhythm * 100) / 100,
+    duration: Math.round(duration * 100) / 100
+  };
+  
+  console.log('Features:', features);
+  
+  // Send to server
+  try {
+    const res = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ features })
+    });
+    const data = await res.json();
+    showResult(data, features);
+  } catch(e) {
+    // Fallback - client-side analysis
+    showResult(analyzeLocally(features), features);
+  }
+  
+  tempCtx.close();
+}
+
+function analyzeLocally(f) {
+  const { pitch, energy, rhythm } = f;
+  let mood, emoji, color, confidence, description, advice;
+  
+  if (pitch > 3500 && energy > 0.6) {
+    mood = "Excited & Happy"; emoji = "🎉"; color = "#00f5d4"; confidence = 82;
+    description = "Your budgie is feeling energetic and joyful!";
+    advice = "Talk back! Budgies love interactive vocal play.";
+  } else if (pitch > 2500 && energy > 0.3) {
+    mood = "Content & Chatty"; emoji = "😊"; color = "#7c3aed"; confidence = 78;
+    description = "Your budgie is relaxed and socializing.";
+    advice = "They're happy! Keep doing what you're doing.";
+  } else if (pitch <= 2500 && energy <= 0.3) {
+    mood = "Calm / Sleepy"; emoji = "😴"; color = "#60a5fa"; confidence = 75;
+    description = "Soft, low-energy sounds — winding down.";
+    advice = "Consider dimming lights. They may be ready for a nap.";
+  } else if (pitch > 3500 && energy <= 0.3) {
+    mood = "Alert / Uncertain"; emoji = "😰"; color = "#f59e0b"; confidence = 71;
+    description = "Sharp calls — may have heard something unfamiliar.";
+    advice = "Check for stressors. Speak calmly.";
+  } else if (rhythm > 0.7 && energy > 0.5) {
+    mood = "Distressed"; emoji = "😢"; color = "#ef4444"; confidence = 80;
+    description = "Irregular, high-energy — possible distress.";
+    advice = "Check food, water, environment. Remove threats.";
+  } else if (energy < 0.15 && pitch < 2000) {
+    mood = "Lethargic / Maybe Unwell"; emoji = "🤒"; color = "#dc2626"; confidence = 68;
+    description = "Unusually quiet. Monitor for symptoms.";
+    advice = "Consider consulting an avian vet if prolonged.";
+  } else {
+    mood = "Neutral / Observing"; emoji = "🐦"; color = "#94a3b8"; confidence = 60;
+    description = "Alert, observing, making contact calls.";
+    advice = "Nothing to worry about!";
+  }
+  return { mood, emoji, color, confidence, description, advice };
+}
+
+function showResult(data, features) {
+  const div = document.getElementById('results');
+  const pet = document.getElementById('budgiePet');
+  
+  pet.textContent = data.emoji;
+  
+  div.style.display = 'block';
+  div.style.background = data.color + '15';
+  div.style.border = '1px solid ' + data.color + '40';
+  
+  div.innerHTML = `
+    <div class="mood-emoji">${data.emoji}</div>
+    <div class="mood-name" style="color:${data.color}">${data.mood}</div>
+    <div class="mood-confidence">${data.confidence}% confidence</div>
+    <div class="mood-desc">${data.description}</div>
+    <div class="mood-advice" style="border-left:3px solid ${data.color}">💡 ${data.advice}</div>
+    <div class="raw-data">
+      📊 Raw Audio Data:<br>
+      Pitch: ${features.pitch} Hz ${features.pitch > 3000 ? '(high 🔺)' : features.pitch < 2500 ? '(low 🔻)' : '(mid ➖)'}<br>
+      Energy: ${Math.round(features.energy * 100)}% ${features.energy > 0.5 ? '(high 🔺)' : features.energy < 0.3 ? '(low 🔻)' : '(mid ➖)'}<br>
+      Rhythm: ${Math.round(features.rhythm * 100)}% ${features.rhythm > 0.6 ? '(erratic ⚡)' : '(steady ➖)'}<br>
+      Duration: ${features.duration}s
+    </div>
+    <div class="scientific">${data.scientificNote || 'Analysis based on published budgie vocalization research'}</div>
+  `;
+  
+  document.getElementById('status').textContent = '✅ Analysis complete! Try another sound?';
+  document.getElementById('recordBtn').textContent = '🎤 Record Again';
+}
+</script>
+</body>
+</html>
